@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using DMIT1514_Lab06_Platformer;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,6 +9,13 @@ namespace PlatformerGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        Texture2D playerTexture;
+        Texture2D tile;
+        GameObject player;
+        Floor f;
+        Transform floorTransform;
+        Transform playerTransform;
 
         public PlatformerGame()
         {
@@ -24,12 +32,17 @@ namespace PlatformerGame
             _graphics.PreferredBackBufferWidth = 1080;
             _graphics.PreferredBackBufferHeight = 720;
             _graphics.ApplyChanges();
+            playerTransform = new Transform(new Vector2(128, 128), 0, 1f);
+            floorTransform = new Transform(new Vector2(400, 400), 0, 4f);
+            player = new Actor(this, playerTransform, playerTexture);
+            f = new Floor(this, floorTransform, tile);
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            playerTexture = Content.Load<Texture2D>("character_0004");
+            tile = Content.Load<Texture2D>("tile_0001");
             // TODO: use this.Content to load your game content here
         }
 
