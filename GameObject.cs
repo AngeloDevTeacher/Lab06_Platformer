@@ -10,7 +10,7 @@ namespace PlatformerGame
         internal Transform transform;
         internal Texture2D texture;
 
-        // Each child should overrode/make a new spritebatch.
+        // Each child should override/make a new spritebatch.
         // Objects of the same class can share the spritebatch.
         public static SpriteBatch spriteBatch;
 
