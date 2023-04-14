@@ -26,6 +26,9 @@ namespace PlatformerGame
             game.Components.Add(this); // This allows the game to call Update and Draw automatically.
             this.transform = transform;
             this.texture = texture2D;
+
+            rectangle = texture.Bounds;
+            rectangle.Inflate(transform._scale,transform._scale);
         }
 
         public void Start(Vector2 startPosition)

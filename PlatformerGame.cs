@@ -9,7 +9,7 @@ namespace PlatformerGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public const int GameScale = 3;
+        private const int GameScale = 2;
 
         Texture2D playerTexture;
         Texture2D tile;

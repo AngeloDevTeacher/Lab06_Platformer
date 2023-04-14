@@ -13,17 +13,24 @@ namespace DMIT1514_Lab06_Platformer
             Velocity = new Vector2(0,4);
             this.transform = base.transform;
             this.texture = base.texture;
+
             this.rectangle = this.texture.Bounds;
+            //this.rectangle.Inflate(transform._scale, transform._scale);
         }
+
         public override void Update(GameTime gameTime)
         {
-            //base.Update(gameTime);
-            rectangle = new Rectangle(transform._position.ToPoint(), rectangle.Size);
-            if (rectangle.Bottom < Game.Window.ClientBounds.Height)
+
+            if (transform._position.Y + transform._scale*(rectangle.Height/2) > Game.Window.ClientBounds.Height)
+            {
+                transform.SetPosition(transform._position.X, Game.Window.ClientBounds.Height - (transform._scale*(rectangle.Height / 2)));
+                Velocity.Y = 0;
+            }
+            else
             {
                 transform.MovePosition(Velocity);
             }
-
+            rectangle.Offset(Velocity);
         }
     }
 }
