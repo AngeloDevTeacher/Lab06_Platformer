@@ -20,6 +20,10 @@ namespace PlatformerGame
         {
             _position = newPosition;
         }
+        public void SetPosition(float x, float y)
+        {
+            _position = new Vector2(x, y);
+        }
 
         public Vector2 MovePosition(Vector2 posOffset)
         {
