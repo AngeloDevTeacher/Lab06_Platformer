@@ -9,7 +9,7 @@ namespace PlatformerGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private const int GameScale = 2;
+        private const int GameScale = 4;
 
         Texture2D playerTexture;
         Texture2D tile;
@@ -51,7 +51,10 @@ namespace PlatformerGame
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            if(Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                player.transform.SetPosition(Mouse.GetState().X,Mouse.GetState().Y);
+            }
             // TODO: Add your update logic here
 
             base.Update(gameTime);

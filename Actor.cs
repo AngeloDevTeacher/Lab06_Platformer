@@ -20,7 +20,7 @@ namespace DMIT1514_Lab06_Platformer
 
         public override void Update(GameTime gameTime)
         {
-
+ 
             if (transform._position.Y + transform._scale*(rectangle.Height/2) > Game.Window.ClientBounds.Height)
             {
                 transform.SetPosition(transform._position.X, Game.Window.ClientBounds.Height - (transform._scale*(rectangle.Height / 2)));
@@ -29,6 +29,7 @@ namespace DMIT1514_Lab06_Platformer
             else
             {
                 transform.MovePosition(Velocity);
+                //Velocity.Y = 3;
             }
             rectangle.Offset(Velocity);
         }
