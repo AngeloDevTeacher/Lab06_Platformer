@@ -9,6 +9,7 @@ namespace PlatformerGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        public const int GameScale = 3;
 
         Texture2D playerTexture;
         Texture2D tile;
@@ -29,11 +30,11 @@ namespace PlatformerGame
             // TODO: Add your initialization logic here
             base.Initialize();
             Window.Title = "Platformer Game";
-            _graphics.PreferredBackBufferWidth = 1080;
-            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.PreferredBackBufferWidth = 360 * GameScale;
+            _graphics.PreferredBackBufferHeight = 240 * GameScale;
             _graphics.ApplyChanges();
-            playerTransform = new Transform(new Vector2(128, 128), 0, 1f);
-            floorTransform = new Transform(new Vector2(400, 400), 0, 4f);
+            playerTransform = new Transform(new Vector2(128, 128), 0, GameScale);
+            floorTransform = new Transform(new Vector2(400, 400), 0, GameScale);
             player = new Actor(this, playerTransform, playerTexture);
             f = new Floor(this, floorTransform, tile);
         }
