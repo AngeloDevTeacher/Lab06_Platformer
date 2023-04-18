@@ -10,14 +10,14 @@ namespace DMIT1514_Lab06_Platformer
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private const int GameScale = 4;
+        private const int GameScale = 1;
 
         Texture2D playerTexture;
         Texture2D tile;
         Actor player;
         Collider f;
 
-        List<Collider> platformTests;
+        List<Collider> platformTests =new List<Collider>();
 
         Transform floorTransform;
         Transform playerTransform;
@@ -37,8 +37,8 @@ namespace DMIT1514_Lab06_Platformer
             _graphics.PreferredBackBufferWidth = 360 * GameScale;
             _graphics.PreferredBackBufferHeight = 240 * GameScale;
             _graphics.ApplyChanges();
-            playerTransform = new Transform(new Vector2(128, 128), 0, GameScale);
-            floorTransform = new Transform(new Vector2(128, 600), 0, GameScale);
+            playerTransform = new Transform(new Vector2(360/2, 0), 0, GameScale);
+            floorTransform = new Transform(new Vector2(360/2, 200), 0, GameScale);
             player = new Actor(this, playerTransform, playerTexture);
             f = new Collider(this, floorTransform, tile);
 
@@ -65,6 +65,10 @@ namespace DMIT1514_Lab06_Platformer
             foreach (Collider c in platformTests)
             {
                 c.ProcessCollision(player);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                player.SetVelocity(0, -5);
             }
             base.Update(gameTime);
         }

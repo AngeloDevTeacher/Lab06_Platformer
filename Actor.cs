@@ -15,25 +15,30 @@ namespace DMIT1514_Lab06_Platformer
             this.texture = base.texture;
 
             this.rectangle = this.texture.Bounds;
-            //this.rectangle.Inflate(transform._scale, transform._scale);
-            Velocity.Y = 3;
+            Velocity.Y += 1;
         }
 
         public override void Update(GameTime gameTime)
         {
 
-            Velocity.Y += 3;
-            transform.MovePosition(Velocity);
+            Velocity.Y += 1;
             rectangle.Offset(Velocity);
+            transform.MovePosition(Velocity);
+
         }
         internal void Land(Rectangle landingRect)
         {
-            transform.SetPosition(transform._position.X, landingRect.Top - (transform._scale * (rectangle.Height / 2)));
+            transform.SetPosition(transform._position.X, landingRect.Top - rectangle.Height+1);
             Velocity.Y = 0;
         }
         internal void StandOn(Rectangle standRect)
         {
-            Velocity.Y -= 3;
+            Velocity.Y -= 1;
+        }
+
+        public void SetVelocity(int x,int y)
+        {
+            Velocity = new Vector2(x,y);
         }
     }
 }
