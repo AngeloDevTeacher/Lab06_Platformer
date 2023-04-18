@@ -37,8 +37,8 @@ namespace DMIT1514_Lab06_Platformer
             _graphics.PreferredBackBufferWidth = 360 * GameScale;
             _graphics.PreferredBackBufferHeight = 240 * GameScale;
             _graphics.ApplyChanges();
-            playerTransform = new Transform(new Vector2(360/2, 0), 0, GameScale);
-            floorTransform = new Transform(new Vector2(360/2, 200), 0, GameScale);
+            playerTransform = new Transform(new Vector2(0, 0), 0, GameScale);
+            floorTransform = new Transform(new Vector2(0, 200), 0, GameScale);
             player = new Actor(this, playerTransform, playerTexture);
             f = new Collider(this, floorTransform, tile);
 
