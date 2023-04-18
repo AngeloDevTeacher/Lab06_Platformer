@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using PlatformerGame;
+
 
 namespace DMIT1514_Lab06_Platformer
 {
@@ -16,22 +16,24 @@ namespace DMIT1514_Lab06_Platformer
 
             this.rectangle = this.texture.Bounds;
             //this.rectangle.Inflate(transform._scale, transform._scale);
+            Velocity.Y = 3;
         }
 
         public override void Update(GameTime gameTime)
         {
- 
-            if (transform._position.Y + transform._scale*(rectangle.Height/2) > Game.Window.ClientBounds.Height)
-            {
-                transform.SetPosition(transform._position.X, Game.Window.ClientBounds.Height - (transform._scale*(rectangle.Height / 2)));
-                Velocity.Y = 0;
-            }
-            else
-            {
-                transform.MovePosition(Velocity);
-                //Velocity.Y = 3;
-            }
+
+            Velocity.Y += 3;
+            transform.MovePosition(Velocity);
             rectangle.Offset(Velocity);
+        }
+        internal void Land(Rectangle landingRect)
+        {
+            transform.SetPosition(transform._position.X, landingRect.Top - (transform._scale * (rectangle.Height / 2)));
+            Velocity.Y = 0;
+        }
+        internal void StandOn(Rectangle standRect)
+        {
+            Velocity.Y -= 3;
         }
     }
 }

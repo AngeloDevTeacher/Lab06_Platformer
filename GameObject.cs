@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace PlatformerGame
+namespace DMIT1514_Lab06_Platformer
 {
     public class GameObject : DrawableGameComponent
     {

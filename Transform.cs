@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace PlatformerGame
+namespace DMIT1514_Lab06_Platformer
 {
     public struct Transform
     {

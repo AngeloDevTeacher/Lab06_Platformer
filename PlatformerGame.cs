@@ -2,8 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
-namespace PlatformerGame
+namespace DMIT1514_Lab06_Platformer
 {
     public class PlatformerGame : Game
     {
@@ -13,8 +14,11 @@ namespace PlatformerGame
 
         Texture2D playerTexture;
         Texture2D tile;
-        GameObject player;
-        Floor f;
+        Actor player;
+        Collider f;
+
+        List<Collider> platformTests;
+
         Transform floorTransform;
         Transform playerTransform;
 
@@ -34,9 +38,11 @@ namespace PlatformerGame
             _graphics.PreferredBackBufferHeight = 240 * GameScale;
             _graphics.ApplyChanges();
             playerTransform = new Transform(new Vector2(128, 128), 0, GameScale);
-            floorTransform = new Transform(new Vector2(400, 400), 0, GameScale);
+            floorTransform = new Transform(new Vector2(128, 600), 0, GameScale);
             player = new Actor(this, playerTransform, playerTexture);
-            f = new Floor(this, floorTransform, tile);
+            f = new Collider(this, floorTransform, tile);
+
+            platformTests.Add(f);
         }
 
         protected override void LoadContent()
@@ -56,7 +62,10 @@ namespace PlatformerGame
                 player.transform.SetPosition(Mouse.GetState().X,Mouse.GetState().Y);
             }
             // TODO: Add your update logic here
-
+            foreach (Collider c in platformTests)
+            {
+                c.ProcessCollision(player);
+            }
             base.Update(gameTime);
         }
 
