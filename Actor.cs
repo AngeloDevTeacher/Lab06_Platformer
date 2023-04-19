@@ -27,7 +27,6 @@ namespace DMIT1514_Lab06_Platformer
         }
         internal void Land(Rectangle landingRect)
         {
-            //rectangle.X = (int)rectangle.X;
             rectangle.Y = (int)(landingRect.Top - rectangle.Height) + 1;
             Velocity.Y = 0;
             transform.SyncRect(rectangle);
