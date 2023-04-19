@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Data.Common;
 
 namespace DMIT1514_Lab06_Platformer
 {
@@ -47,6 +48,11 @@ namespace DMIT1514_Lab06_Platformer
         public Point ToPoint()
         {
             return new Point((int)_position.X, (int)_position.Y);
+        }
+        public void SyncRect(Rectangle source)
+        {
+            _position.X = source.X;
+            _position.Y = source.Y;
         }
     }
 }

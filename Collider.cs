@@ -17,7 +17,10 @@ namespace DMIT1514_Lab06_Platformer
             this.transform = base.transform;
             this.texture = base.texture;
             this.rectangle = this.texture.Bounds;
+
             this.rectangle.Location = this.transform._position.ToPoint();
+            this.rectangle = new Rectangle(rectangle.Location, new Point(rectangle.Width*(int)transform._scale,rectangle.Height*(int)transform._scale));
+            //transform.SyncRect(this.rectangle);
             type = ColliderType.Top;
         }
 

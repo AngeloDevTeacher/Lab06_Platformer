@@ -28,7 +28,7 @@ namespace DMIT1514_Lab06_Platformer
             this.texture = texture2D;
 
             rectangle = texture.Bounds;
-            rectangle.Inflate(transform._scale,transform._scale);
+            this.rectangle = new Rectangle(rectangle.Location, new Point(rectangle.Width * (int)transform._scale, rectangle.Height * (int)transform._scale));
         }
 
         public void Start(Vector2 startPosition)
