@@ -28,6 +28,10 @@ namespace DMIT1514_Lab06_Platformer
         {
             base.Update(gameTime);
         }
+        public void SetType(ColliderType t)
+        {
+            type = t;
+        }
 
         internal bool ProcessCollision(Actor actor)
         {
@@ -46,6 +50,10 @@ namespace DMIT1514_Lab06_Platformer
                         actor.StandOn(rectangle);
                         break;
                     case ColliderType.Bottom:
+                        if(actor.Velocity.Y < 0)
+                        {
+                            actor.Velocity.Y = 0;
+                        }
                         break;
                 }
             }

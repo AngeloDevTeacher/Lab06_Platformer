@@ -16,6 +16,8 @@ namespace DMIT1514_Lab06_Platformer
         Texture2D tile;
         Actor player;
         Collider f;
+        Collider f2;
+        bool inBlock;
 
         List<Collider> platformTests =new List<Collider>();
 
@@ -41,8 +43,11 @@ namespace DMIT1514_Lab06_Platformer
             floorTransform = new Transform(new Vector2(20*GameScale, 200*GameScale), 0, GameScale);
             player = new Actor(this, playerTransform, playerTexture);
             f = new Collider(this, floorTransform, tile);
-
+            floorTransform = new Transform(new Vector2(20 * GameScale, 130 * GameScale), 0, GameScale);
+            f2 = new Collider(this, floorTransform, tile);
             platformTests.Add(f);
+            platformTests.Add(f2);
+            f2.SetType(Collider.ColliderType.Bottom);
         }
 
         protected override void LoadContent()
@@ -66,9 +71,10 @@ namespace DMIT1514_Lab06_Platformer
             // TODO: Add your update logic here
             foreach (Collider c in platformTests)
             {
-                c.ProcessCollision(player);
+                inBlock = c.ProcessCollision(player);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !inBlock)
             {
                 player.AddVelocity(0, -4);
             }
